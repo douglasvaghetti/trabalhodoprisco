@@ -1,6 +1,8 @@
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,8 +15,8 @@ import java.net.URL;
  * @author Hallan
  */
 public class Ferramentas {
-    public static URL getCodeBase() throws MalformedURLException{
-        return new URL(System.getProperty("user.dir"));
+    public static String getCodeBase(){
+        return System.getProperty("user.dir");
     }
 }
 

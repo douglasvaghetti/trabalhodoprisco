@@ -11,17 +11,34 @@ public class Cartola extends Objeto{
     
     public Cartola(int x, int y) throws IOException {
         super(x, y);
-        imgCartola = ImageIO.read(new URL(Ferramentas.getCodeBase(), "imagens/cartola.jpg"));
+        this.setAltura(50);
+        this.setLargura(50);
+        System.out.println("base= "+Ferramentas.getCodeBase());
+        System.out.println(Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Azul.png");
+        URL url= new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Azul.png");
+        System.out.println("url = "+url.toString());
+        
+        imgCartola = ImageIO.read(url);
     }
 
     @Override
     public void desenha(Graphics g) {
-        g.drawImage(imgCartola, this.getX(), this.getY(), 50, 50, null);
+        g.drawImage(imgCartola, this.getX(), this.getY(), this.getLargura(), this.getAltura(), null);
     }
 
     @Override
     public void getXML() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean colisao(int x, int y) {
+        if(x > this.getX() && x < this.getX()+this.getLargura()){
+            if(y > this.getY() && y < this.getY()+this.getAltura()){
+                return true;
+            }
+        }
+        return false;
     }
     
 }
