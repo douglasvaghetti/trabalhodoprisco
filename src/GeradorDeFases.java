@@ -1,5 +1,5 @@
 
-import javax.swing.JFrame;
+import java.io.IOException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -7,19 +7,17 @@ import javax.swing.JFrame;
  * and open the template in the editor.
  */
 
-
 /**
  *
- * @author douglas
+ * @author Hallan
  */
-public class CriadorSites {
+public class GeradorDeFases {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        JFrame janela = new JanelaPrincipal();
-        janela.setVisible(true);
+    public static void main(String[] args) throws IOException {
+        
     }
     
 }
