@@ -1,16 +1,6 @@
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Hallan
- */
 public class Fase {
     
     private Macaco macaco;
@@ -24,6 +14,12 @@ public class Fase {
         }
     }
     
+    public void adicionaObjeto(Objeto obj){
+        this.atuadores.add(obj);
+    }
     
+    public void RemoveObjeto(Objeto obj){
+        this.atuadores.remove(obj);
+    }
     
 }
