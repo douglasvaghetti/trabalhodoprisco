@@ -12,7 +12,8 @@ public class TelaEdicao extends javax.swing.JFrame {
      * Creates new form TelaEdicao
      */
     private Fase fase;
-    private Objeto arrastado = null;
+    private Objeto novoObjeto = null;
+    private Objeto objetoMovido = null;
     private Objeto abaixoDoMouse = null;
     public TelaEdicao(Fase fase) {
         this.fase = fase;
@@ -78,7 +79,7 @@ public class TelaEdicao extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 609, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,8 +113,8 @@ public class TelaEdicao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(NovaCartola, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NovoCanhao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,23 +152,34 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_NovoCanhaoActionPerformed
 
     private void MoveObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoveObjeto
-        
-        if(arrastado != null){
-            arrastado.setX(evt.getX());
-            arrastado.setY(evt.getY());
-            Graphics g = jPanel1.getGraphics();
-            g.setColor(Color.white);
-            g.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
-            for(Objeto atuador: fase.getAtuadores()){
-                atuador.desenha(g);
-            }
-            arrastado.desenha(g);
+        Graphics g = jPanel1.getGraphics();
+        g.setColor(Color.white);
+        g.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
+            
+        for(Objeto atuador: fase.getAtuadores()){
+            atuador.desenha(g);
         }
+        
+        if(novoObjeto != null){
+            novoObjeto.setX(evt.getX());
+            novoObjeto.setY(evt.getY());
+            novoObjeto.desenha(g);
+            g.setColor(Color.RED);
+            g.drawRect(novoObjeto.getX(), novoObjeto.getY(), novoObjeto.getLargura(), novoObjeto.getAltura());
+        }
+        if(objetoMovido != null){
+            objetoMovido.setX(evt.getX());
+            objetoMovido.setY(evt.getY());
+            objetoMovido.desenha(g);
+            g.setColor(Color.RED);
+            g.drawRect(objetoMovido.getX(), objetoMovido.getY(), objetoMovido.getLargura(), objetoMovido.getAltura());
+        }
+        
     }//GEN-LAST:event_MoveObjeto
 
     private void NovaCartolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaActionPerformed
         try {
-            arrastado = new Cartola(100, 100);
+            novoObjeto = new Cartola(100, 100);
         } catch (IOException ex) {
             System.out.println("Não está achando a cartola!");
             Logger.getLogger(TelaEdicao.class.getName()).log(Level.SEVERE, null, ex);
@@ -175,16 +187,17 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_NovaCartolaActionPerformed
 
     private void SoltaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoltaObjeto
-        if(!fase.getAtuadores().contains(arrastado)){
-            fase.adicionaObjeto(arrastado);
+        if(novoObjeto != null){
+            fase.adicionaObjeto(novoObjeto);
             System.out.println("adicionou objeto");
         }
-        arrastado=null;
+        objetoMovido = null;
+        novoObjeto = null;
     }//GEN-LAST:event_SoltaObjeto
 
     private void SelecionaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelecionaObjeto
-        if(abaixoDoMouse != null && arrastado == null){
-            arrastado = abaixoDoMouse;
+        if(abaixoDoMouse != null && novoObjeto == null){
+            objetoMovido = abaixoDoMouse;
             System.out.println("chou novo abaixo do mouse");
         }
     }//GEN-LAST:event_SelecionaObjeto
@@ -193,10 +206,9 @@ public class TelaEdicao extends javax.swing.JFrame {
         Objeto aux = null;
         for(Objeto atuador: fase.getAtuadores()){
                 if(atuador.colisao(evt.getX(), evt.getY())){
-                    aux = abaixoDoMouse;
-                    
+                    aux = atuador;
+                    System.out.println("objeto abaixo do mouse");
                 }
-            
         }
         abaixoDoMouse=aux;
     }//GEN-LAST:event_MarcaObjeto
