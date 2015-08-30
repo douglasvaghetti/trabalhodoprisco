@@ -66,13 +66,8 @@
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-<<<<<<< HEAD
                   <Component id="NovaCartola" alignment="1" max="32767" attributes="0"/>
                   <Component id="NovoCanhao" alignment="1" max="32767" attributes="0"/>
-=======
-                  <Component id="NovoCarroPalhacao2" alignment="1" max="32767" attributes="0"/>
-                  <Component id="NovoCarroPalhacao1" alignment="1" max="32767" attributes="0"/>
->>>>>>> 60d87f5a1096d0c9f2a3d474709994603a53982e
                   <Component id="NovoCarroPalhacao" alignment="1" max="32767" attributes="0"/>
                   <Component id="LabelMenuLateral" max="32767" attributes="0"/>
               </Group>
@@ -91,15 +86,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="NovoCarroPalhacao" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-<<<<<<< HEAD
                       <Component id="NovoCanhao" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="NovaCartola" min="-2" max="-2" attributes="0"/>
-=======
-                      <Component id="NovoCarroPalhacao1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="NovoCarroPalhacao2" min="-2" max="-2" attributes="0"/>
->>>>>>> 60d87f5a1096d0c9f2a3d474709994603a53982e
                       <EmptySpace min="0" pref="138" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -119,16 +108,11 @@
         <Property name="text" type="java.lang.String" value="Novo:"/>
       </Properties>
     </Component>
-<<<<<<< HEAD
     <Component class="javax.swing.JButton" name="NovoCanhao">
-=======
-    <Component class="javax.swing.JButton" name="NovoCarroPalhacao1">
->>>>>>> 60d87f5a1096d0c9f2a3d474709994603a53982e
       <Properties>
         <Property name="text" type="java.lang.String" value="Canhao"/>
       </Properties>
       <Events>
-<<<<<<< HEAD
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovoCanhaoActionPerformed"/>
       </Events>
     </Component>
@@ -139,15 +123,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartolaActionPerformed"/>
       </Events>
-=======
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovoCarroPalhacao1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="NovoCarroPalhacao2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cartolas"/>
-      </Properties>
->>>>>>> 60d87f5a1096d0c9f2a3d474709994603a53982e
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
@@ -155,13 +130,10 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
       </Properties>
-<<<<<<< HEAD
       <Events>
         <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="MoveObjeto,MarcaObjeto"/>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SoltaObjeto,SelecionaObjeto"/>
       </Events>
-=======
->>>>>>> 60d87f5a1096d0c9f2a3d474709994603a53982e
 
       <Layout>
         <DimensionLayout dim="0">
