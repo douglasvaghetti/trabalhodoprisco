@@ -14,7 +14,14 @@ public abstract class Objeto {
     
     abstract public void getXML();
 
-    abstract public boolean colisao(int x, int y);
+    public boolean colisao(int x, int y) {
+        if(x > this.getX() && x < this.getX()+this.getLargura()){
+            if(y > this.getY() && y < this.getY()+this.getAltura()){
+                return true;
+            }
+        }
+        return false;
+    }
     
     public int getX() {
         return x;

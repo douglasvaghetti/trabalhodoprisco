@@ -30,15 +30,5 @@ public class Cartola extends Objeto{
     public void getXML() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public boolean colisao(int x, int y) {
-        if(x > this.getX() && x < this.getX()+this.getLargura()){
-            if(y > this.getY() && y < this.getY()+this.getAltura()){
-                return true;
-            }
-        }
-        return false;
-    }
     
 }
