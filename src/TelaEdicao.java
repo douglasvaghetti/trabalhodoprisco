@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 public class TelaEdicao extends javax.swing.JFrame {
 
     private Fase fase;
+    private int numeroDeEstrelas=0;
     private Objeto novoObjeto = null;
     private Objeto objetoMovido = null;
     private Objeto abaixoDoMouse = null;
@@ -25,20 +26,21 @@ public class TelaEdicao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        NovoCarroPalhacao = new javax.swing.JButton();
+        Estrela = new javax.swing.JButton();
         LabelMenuLateral = new javax.swing.JLabel();
         NovoCanhao = new javax.swing.JButton();
-        NovaCartola = new javax.swing.JButton();
+        CartolaAzulDireita = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        NovaCartola1 = new javax.swing.JButton();
-        NovaCartola2 = new javax.swing.JButton();
-        NovaCartola3 = new javax.swing.JButton();
-        NovaCartola4 = new javax.swing.JButton();
-        NovaCartola5 = new javax.swing.JButton();
-        NovaCartola6 = new javax.swing.JButton();
-        NovaCartola8 = new javax.swing.JButton();
-        NovoCarroPalhacao1 = new javax.swing.JButton();
-        NovoCarroPalhacao2 = new javax.swing.JButton();
+        CartolaAzulEsquerda = new javax.swing.JButton();
+        CartolaAmarelaDireita = new javax.swing.JButton();
+        CartolaAmarelaEsquerda = new javax.swing.JButton();
+        CartolaVermelhaEsquerda = new javax.swing.JButton();
+        CartolaVermelhaDireita = new javax.swing.JButton();
+        CartolaVerdeDireita = new javax.swing.JButton();
+        CartolaVerdeEsquerda = new javax.swing.JButton();
+        CarroPalhacao = new javax.swing.JButton();
+        Macaco = new javax.swing.JButton();
+        Plataforma = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Fase = new javax.swing.JMenu();
         Abria = new javax.swing.JMenuItem();
@@ -48,7 +50,12 @@ public class TelaEdicao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
 
-        NovoCarroPalhacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Estrela.png"))); // NOI18N
+        Estrela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Estrela.png"))); // NOI18N
+        Estrela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaEstrela(evt);
+            }
+        });
 
         LabelMenuLateral.setText("Novo:");
 
@@ -56,28 +63,28 @@ public class TelaEdicao extends javax.swing.JFrame {
         NovoCanhao.setText("Canhao");
         NovoCanhao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovoCanhaoActionPerformed(evt);
+                NovoCanhao(evt);
             }
         });
 
-        NovaCartola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Azul.png"))); // NOI18N
-        NovaCartola.addActionListener(new java.awt.event.ActionListener() {
+        CartolaAzulDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Azul.png"))); // NOI18N
+        CartolaAzulDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartolaActionPerformed(evt);
+                CartolaAzulDireitaAzulDireita(evt);
             }
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                MoveObjeto(evt);
-                MarcaObjeto(evt);
-            }
-        });
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SoltaObjeto(evt);
                 SelecionaObjeto(evt);
+            }
+        });
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                MoveObjeto(evt);
+                MarcaObjeto(evt);
             }
         });
 
@@ -85,65 +92,82 @@ public class TelaEdicao extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 652, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        NovaCartola1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Azul.png"))); // NOI18N
-        NovaCartola1.addActionListener(new java.awt.event.ActionListener() {
+        CartolaAzulEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Azul.png"))); // NOI18N
+        CartolaAzulEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartola1ActionPerformed(evt);
+                CartolaAzulEsquerdaAzulEsquerda(evt);
             }
         });
 
-        NovaCartola2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
-        NovaCartola2.addActionListener(new java.awt.event.ActionListener() {
+        CartolaAmarelaDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
+        CartolaAmarelaDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartola2ActionPerformed(evt);
+                NovaCartolaAmarelaDireita(evt);
             }
         });
 
-        NovaCartola3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
-        NovaCartola3.addActionListener(new java.awt.event.ActionListener() {
+        CartolaAmarelaEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
+        CartolaAmarelaEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartola3ActionPerformed(evt);
+                NovaCartolaAmarelaEsquerda(evt);
             }
         });
 
-        NovaCartola4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Vermelha.png"))); // NOI18N
-        NovaCartola4.addActionListener(new java.awt.event.ActionListener() {
+        CartolaVermelhaEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Vermelha.png"))); // NOI18N
+        CartolaVermelhaEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartola4ActionPerformed(evt);
+                NovaCartolaVermelhaEsquerda(evt);
             }
         });
 
-        NovaCartola5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Vermelha.png"))); // NOI18N
-        NovaCartola5.addActionListener(new java.awt.event.ActionListener() {
+        CartolaVermelhaDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Vermelha.png"))); // NOI18N
+        CartolaVermelhaDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartola5ActionPerformed(evt);
+                NovaCartolaVermelhaDireita(evt);
             }
         });
 
-        NovaCartola6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
-        NovaCartola6.addActionListener(new java.awt.event.ActionListener() {
+        CartolaVerdeDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
+        CartolaVerdeDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartola6ActionPerformed(evt);
+                NovaCartolaVerdeDireita(evt);
             }
         });
 
-        NovaCartola8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
-        NovaCartola8.addActionListener(new java.awt.event.ActionListener() {
+        CartolaVerdeEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
+        CartolaVerdeEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartola8ActionPerformed(evt);
+                NovaCartolaVerdeEsquerda(evt);
             }
         });
 
-        NovoCarroPalhacao1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Pendulo.png"))); // NOI18N
+        CarroPalhacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Pendulo.png"))); // NOI18N
+        CarroPalhacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovoCarroPalhacao(evt);
+            }
+        });
 
-        NovoCarroPalhacao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Macaco.png"))); // NOI18N
+        Macaco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Macaco.png"))); // NOI18N
+        Macaco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovoMacaco(evt);
+            }
+        });
+
+        Plataforma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Plataforma.png"))); // NOI18N
+        Plataforma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Plataforma(evt);
+            }
+        });
 
         Fase.setText("Fase");
 
@@ -174,28 +198,31 @@ public class TelaEdicao extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelMenuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(LabelMenuLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CarroPalhacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Estrela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Macaco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(NovoCanhao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(NovaCartola1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(NovaCartola, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(NovaCartola8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(NovaCartola6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(NovoCarroPalhacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(NovoCarroPalhacao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(NovoCarroPalhacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NovaCartola3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NovaCartola2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NovaCartola4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NovaCartola5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(Plataforma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CartolaAzulEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CartolaAzulDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CartolaVerdeEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CartolaVerdeDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CartolaAmarelaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CartolaAmarelaDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CartolaVermelhaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CartolaVermelhaDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,29 +230,31 @@ public class TelaEdicao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(LabelMenuLateral)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NovoCarroPalhacao1)
+                .addComponent(CarroPalhacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NovoCarroPalhacao)
+                .addComponent(Estrela)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NovoCarroPalhacao2)
+                .addComponent(Macaco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(NovoCanhao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(Plataforma, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CartolaAzulDireita)
+                    .addComponent(CartolaAzulEsquerda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NovaCartola)
-                    .addComponent(NovaCartola1))
+                    .addComponent(CartolaVerdeDireita)
+                    .addComponent(CartolaVerdeEsquerda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NovaCartola6)
-                    .addComponent(NovaCartola8))
+                    .addComponent(CartolaAmarelaDireita)
+                    .addComponent(CartolaAmarelaEsquerda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NovaCartola2)
-                    .addComponent(NovaCartola3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NovaCartola5)
-                    .addComponent(NovaCartola4)))
+                    .addComponent(CartolaVermelhaDireita)
+                    .addComponent(CartolaVermelhaEsquerda)))
         );
 
         pack();
@@ -235,9 +264,9 @@ public class TelaEdicao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ExportaActionPerformed
 
-    private void NovoCanhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoCanhaoActionPerformed
+    private void NovoCanhao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoCanhao
         // TODO add your handling code here:
-    }//GEN-LAST:event_NovoCanhaoActionPerformed
+    }//GEN-LAST:event_NovoCanhao
 
     private void MoveObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoveObjeto
         Graphics g = jPanel1.getGraphics();
@@ -265,9 +294,10 @@ public class TelaEdicao extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MoveObjeto
 
-    private void NovaCartolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaActionPerformed
-            novoObjeto = new Cartola(100, 100);
-    }//GEN-LAST:event_NovaCartolaActionPerformed
+    private void CartolaAzulDireitaAzulDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CartolaAzulDireitaAzulDireita
+            novoObjeto = new Cartola(100, 100,Cartola.Cor.Azul);
+            CartolaAzulDireita.setEnabled(false);
+    }//GEN-LAST:event_CartolaAzulDireitaAzulDireita
 
     private void SoltaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoltaObjeto
         if(novoObjeto != null){
@@ -296,52 +326,80 @@ public class TelaEdicao extends javax.swing.JFrame {
         abaixoDoMouse=aux;
     }//GEN-LAST:event_MarcaObjeto
 
-    private void NovaCartola1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NovaCartola1ActionPerformed
+    private void CartolaAzulEsquerdaAzulEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CartolaAzulEsquerdaAzulEsquerda
+        novoObjeto = new Cartola(100, 100,Cartola.Cor.Azul);
+        CartolaAzulEsquerda.setEnabled(false);
+    }//GEN-LAST:event_CartolaAzulEsquerdaAzulEsquerda
 
-    private void NovaCartola2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NovaCartola2ActionPerformed
+    private void NovaCartolaAmarelaDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaAmarelaDireita
+        novoObjeto = new Cartola(100, 100,Cartola.Cor.Amarela);
+        CartolaAmarelaDireita.setEnabled(false);
+    }//GEN-LAST:event_NovaCartolaAmarelaDireita
 
-    private void NovaCartola3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NovaCartola3ActionPerformed
+    private void NovaCartolaAmarelaEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaAmarelaEsquerda
+        novoObjeto = new Cartola(100, 100,Cartola.Cor.Amarela);
+        CartolaAmarelaEsquerda.setEnabled(false);
+    }//GEN-LAST:event_NovaCartolaAmarelaEsquerda
 
-    private void NovaCartola4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NovaCartola4ActionPerformed
+    private void NovaCartolaVermelhaEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaVermelhaEsquerda
+        novoObjeto = new Cartola(100, 100,Cartola.Cor.Vermelha);
+        CartolaVermelhaEsquerda.setEnabled(false);
+    }//GEN-LAST:event_NovaCartolaVermelhaEsquerda
 
-    private void NovaCartola5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NovaCartola5ActionPerformed
+    private void NovaCartolaVermelhaDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaVermelhaDireita
+        novoObjeto = new Cartola(100, 100,Cartola.Cor.Vermelha);
+        CartolaVermelhaDireita.setEnabled(false);
+    }//GEN-LAST:event_NovaCartolaVermelhaDireita
 
-    private void NovaCartola6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NovaCartola6ActionPerformed
+    private void NovaCartolaVerdeDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaVerdeDireita
+        novoObjeto = new Cartola(100, 100,Cartola.Cor.Verde);
+        CartolaVerdeDireita.setEnabled(false);
+    }//GEN-LAST:event_NovaCartolaVerdeDireita
 
-    private void NovaCartola8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NovaCartola8ActionPerformed
+    private void NovaCartolaVerdeEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaVerdeEsquerda
+        novoObjeto = new Cartola(100, 100,Cartola.Cor.Verde);
+        CartolaVerdeEsquerda.setEnabled(false);
+    }//GEN-LAST:event_NovaCartolaVerdeEsquerda
+
+    private void NovoCarroPalhacao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoCarroPalhacao
+        novoObjeto = new CarroPalhaco(100, 100);
+    }//GEN-LAST:event_NovoCarroPalhacao
+
+    private void NovaEstrela(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaEstrela
+        novoObjeto= new Estrela(100, 100);
+        numeroDeEstrelas++;
+        if(numeroDeEstrelas==3)
+            Estrela.setEnabled(false);
+    }//GEN-LAST:event_NovaEstrela
+
+    private void NovoMacaco(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoMacaco
+        novoObjeto=new Macaco(100,100);
+        Macaco.setEnabled(false);
+    }//GEN-LAST:event_NovoMacaco
+
+    private void Plataforma(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plataforma
+        novoObjeto=new Plataforma(100, 100);
+    }//GEN-LAST:event_Plataforma
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abria;
     private javax.swing.JMenu Ajuda;
+    private javax.swing.JButton CarroPalhacao;
+    private javax.swing.JButton CartolaAmarelaDireita;
+    private javax.swing.JButton CartolaAmarelaEsquerda;
+    private javax.swing.JButton CartolaAzulDireita;
+    private javax.swing.JButton CartolaAzulEsquerda;
+    private javax.swing.JButton CartolaVerdeDireita;
+    private javax.swing.JButton CartolaVerdeEsquerda;
+    private javax.swing.JButton CartolaVermelhaDireita;
+    private javax.swing.JButton CartolaVermelhaEsquerda;
+    private javax.swing.JButton Estrela;
     private javax.swing.JMenuItem Exporta;
     private javax.swing.JMenu Fase;
     private javax.swing.JLabel LabelMenuLateral;
-    private javax.swing.JButton NovaCartola;
-    private javax.swing.JButton NovaCartola1;
-    private javax.swing.JButton NovaCartola2;
-    private javax.swing.JButton NovaCartola3;
-    private javax.swing.JButton NovaCartola4;
-    private javax.swing.JButton NovaCartola5;
-    private javax.swing.JButton NovaCartola6;
-    private javax.swing.JButton NovaCartola8;
+    private javax.swing.JButton Macaco;
     private javax.swing.JButton NovoCanhao;
-    private javax.swing.JButton NovoCarroPalhacao;
-    private javax.swing.JButton NovoCarroPalhacao1;
-    private javax.swing.JButton NovoCarroPalhacao2;
+    private javax.swing.JButton Plataforma;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

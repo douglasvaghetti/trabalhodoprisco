@@ -8,10 +8,7 @@ public class Fase {
     private ArrayList<Objeto> atuadores = new ArrayList<>();
 
     public Fase() {
-        this.macaco = new Macaco(50, 50);
-        for (int i = 0; i < estrelas.length; i++) {
-            this.estrelas[i] = new Estrela(80 + (i*30), 30);
-        }
+       
     }
 
     public Macaco getMacaco() {

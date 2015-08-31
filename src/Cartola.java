@@ -11,24 +11,36 @@ import javax.imageio.ImageIO;
 public class Cartola extends Objeto{
     
     private Image imgCartola;
-    
-    public Cartola(int x, int y) {
+    public enum Cor {Azul,Amarela,Vermelha,Verde};
+    public Cartola(int x, int y,Cor cor) {
         super(x, y);
         this.setAltura(50);
         this.setLargura(50);
-        URL url;
+        URL url=criaURLCartola(cor);
         try {
-            url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Azul.png");
             imgCartola = ImageIO.read(url);
-        } catch (MalformedURLException ex) {
-            System.out.println("Erro ao formar a url da imagem.");
-            Logger.getLogger(Cartola.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        }catch (IOException ex) {
             System.out.println("Erro ao carregar imagem.");
             Logger.getLogger(Cartola.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    private  URL criaURLCartola(Cor cor){
+        URL url = null;
+         try {
+            if(cor==Cor.Azul)
+                url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Azul.png");
+            else if(cor==Cor.Amarela)
+                url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Amarela.png");
+            else if(cor==Cor.Verde)
+                url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Verde.png");
+            else if(cor==Cor.Vermelha)
+                url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Vermelha.png");
+        } catch (MalformedURLException ex) {
+            System.out.println("Erro ao formar a url da imagem.");
+            Logger.getLogger(Cartola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return url;
+    }
     @Override
     public void desenha(Graphics g) {
         g.drawImage(imgCartola, this.getX(), this.getY(), this.getLargura(), this.getAltura(), null);

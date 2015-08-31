@@ -65,34 +65,38 @@
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="LabelMenuLateral" max="32767" attributes="0"/>
+                  <Component id="LabelMenuLateral" min="-2" pref="122" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="CarroPalhacao" alignment="1" max="32767" attributes="0"/>
+                      <Component id="Estrela" alignment="1" max="32767" attributes="0"/>
+                      <Component id="Macaco" alignment="1" max="32767" attributes="0"/>
                       <Component id="NovoCanhao" alignment="1" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="NovaCartola1" min="-2" pref="58" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="NovaCartola" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="Plataforma" alignment="1" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="CartolaAzulEsquerda" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="CartolaAzulDireita" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="CartolaVerdeEsquerda" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="CartolaVerdeDireita" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="CartolaAmarelaEsquerda" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="CartolaAmarelaDireita" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="CartolaVermelhaEsquerda" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="CartolaVermelhaDireita" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="NovaCartola8" min="-2" pref="58" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="NovaCartola6" min="-2" pref="58" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="NovoCarroPalhacao" max="32767" attributes="0"/>
-                      <Component id="NovoCarroPalhacao1" max="32767" attributes="0"/>
-                      <Component id="NovoCarroPalhacao2" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="NovaCartola3" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="NovaCartola2" min="-2" pref="58" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="NovaCartola4" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="NovaCartola5" min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,44 +106,49 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="LabelMenuLateral" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="NovoCarroPalhacao1" min="-2" max="-2" attributes="0"/>
+              <Component id="CarroPalhacao" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="NovoCarroPalhacao" min="-2" max="-2" attributes="0"/>
+              <Component id="Estrela" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="NovoCarroPalhacao2" min="-2" max="-2" attributes="0"/>
+              <Component id="Macaco" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="NovoCanhao" min="-2" pref="58" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NovaCartola" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NovaCartola1" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Component id="Plataforma" min="-2" pref="58" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="CartolaAzulDireita" min="-2" max="-2" attributes="0"/>
+                  <Component id="CartolaAzulEsquerda" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NovaCartola6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NovaCartola8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CartolaVerdeDireita" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CartolaVerdeEsquerda" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NovaCartola2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NovaCartola3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CartolaAmarelaDireita" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CartolaAmarelaEsquerda" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NovaCartola5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NovaCartola4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CartolaVermelhaDireita" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CartolaVermelhaEsquerda" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="NovoCarroPalhacao">
+    <Component class="javax.swing.JButton" name="Estrela">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Estrela.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaEstrela"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelMenuLateral">
       <Properties>
@@ -154,17 +163,17 @@
         <Property name="text" type="java.lang.String" value="Canhao"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovoCanhaoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovoCanhao"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovaCartola">
+    <Component class="javax.swing.JButton" name="CartolaAzulDireita">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Cartola_Azul.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartolaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CartolaAzulDireitaAzulDireita"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -174,14 +183,14 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="MoveObjeto,MarcaObjeto"/>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SoltaObjeto,SelecionaObjeto"/>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="MoveObjeto,MarcaObjeto"/>
       </Events>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="652" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="642" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -191,89 +200,105 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="NovaCartola1">
+    <Component class="javax.swing.JButton" name="CartolaAzulEsquerda">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Cartola_Azul.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartola1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CartolaAzulEsquerdaAzulEsquerda"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovaCartola2">
+    <Component class="javax.swing.JButton" name="CartolaAmarelaDireita">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Cartola_Amarela.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartola2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartolaAmarelaDireita"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovaCartola3">
+    <Component class="javax.swing.JButton" name="CartolaAmarelaEsquerda">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Cartola_Amarela.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartola3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartolaAmarelaEsquerda"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovaCartola4">
+    <Component class="javax.swing.JButton" name="CartolaVermelhaEsquerda">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Cartola_Vermelha.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartola4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartolaVermelhaEsquerda"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovaCartola5">
+    <Component class="javax.swing.JButton" name="CartolaVermelhaDireita">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Cartola_Vermelha.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartola5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartolaVermelhaDireita"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovaCartola6">
+    <Component class="javax.swing.JButton" name="CartolaVerdeDireita">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Cartola_Verde.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartola6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartolaVerdeDireita"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovaCartola8">
+    <Component class="javax.swing.JButton" name="CartolaVerdeEsquerda">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Cartola_Verde.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartola8ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaCartolaVerdeEsquerda"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovoCarroPalhacao1">
+    <Component class="javax.swing.JButton" name="CarroPalhacao">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Pendulo.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovoCarroPalhacao"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NovoCarroPalhacao2">
+    <Component class="javax.swing.JButton" name="Macaco">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/Macaco.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovoMacaco"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Plataforma">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icones/Plataforma.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Plataforma"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
