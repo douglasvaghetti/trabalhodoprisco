@@ -12,7 +12,7 @@ public class Estrela extends Objeto {
 
     private Image imgEstrela;
 
-    public Estrela(int x, int y) throws MalformedURLException {
+    public Estrela(int x, int y)  {
         super(x, y);
         this.setAltura(50);
         this.setLargura(50);
