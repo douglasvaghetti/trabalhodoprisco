@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 public class Macaco extends Objeto{
 
     private Image imgMacaco;
-
     
     public Macaco(int x, int y) {
         super(x, y);
@@ -32,7 +31,7 @@ public class Macaco extends Objeto{
 
     @Override
     public void desenha(Graphics g) {
-        
+        g.drawImage(imgMacaco, this.getX(), this.getY(), this.getLargura(), this.getAltura(), null);
     }
 
     @Override

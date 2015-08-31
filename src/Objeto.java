@@ -4,6 +4,7 @@ import java.awt.Graphics;
 public abstract class Objeto {
     private int x, y;
     private int largura, altura;
+    protected double angulo = 0;
 
     public Objeto(int x, int y) {
         this.x = x;
