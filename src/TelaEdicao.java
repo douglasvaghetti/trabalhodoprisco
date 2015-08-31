@@ -30,6 +30,15 @@ public class TelaEdicao extends javax.swing.JFrame {
         NovoCanhao = new javax.swing.JButton();
         NovaCartola = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        NovaCartola1 = new javax.swing.JButton();
+        NovaCartola2 = new javax.swing.JButton();
+        NovaCartola3 = new javax.swing.JButton();
+        NovaCartola4 = new javax.swing.JButton();
+        NovaCartola5 = new javax.swing.JButton();
+        NovaCartola6 = new javax.swing.JButton();
+        NovaCartola8 = new javax.swing.JButton();
+        NovoCarroPalhacao1 = new javax.swing.JButton();
+        NovoCarroPalhacao2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Fase = new javax.swing.JMenu();
         Abria = new javax.swing.JMenuItem();
@@ -39,10 +48,11 @@ public class TelaEdicao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
 
-        NovoCarroPalhacao.setText("CarroPalhoco");
+        NovoCarroPalhacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Estrela.png"))); // NOI18N
 
         LabelMenuLateral.setText("Novo:");
 
+        NovoCanhao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Canhao.png"))); // NOI18N
         NovoCanhao.setText("Canhao");
         NovoCanhao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,7 +60,7 @@ public class TelaEdicao extends javax.swing.JFrame {
             }
         });
 
-        NovaCartola.setText("Cartolas");
+        NovaCartola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Azul.png"))); // NOI18N
         NovaCartola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NovaCartolaActionPerformed(evt);
@@ -75,12 +85,65 @@ public class TelaEdicao extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 652, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        NovaCartola1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Azul.png"))); // NOI18N
+        NovaCartola1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartola1ActionPerformed(evt);
+            }
+        });
+
+        NovaCartola2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
+        NovaCartola2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartola2ActionPerformed(evt);
+            }
+        });
+
+        NovaCartola3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
+        NovaCartola3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartola3ActionPerformed(evt);
+            }
+        });
+
+        NovaCartola4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Vermelha.png"))); // NOI18N
+        NovaCartola4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartola4ActionPerformed(evt);
+            }
+        });
+
+        NovaCartola5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Vermelha.png"))); // NOI18N
+        NovaCartola5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartola5ActionPerformed(evt);
+            }
+        });
+
+        NovaCartola6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
+        NovaCartola6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartola6ActionPerformed(evt);
+            }
+        });
+
+        NovaCartola8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
+        NovaCartola8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartola8ActionPerformed(evt);
+            }
+        });
+
+        NovoCarroPalhacao1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Pendulo.png"))); // NOI18N
+
+        NovoCarroPalhacao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Macaco.png"))); // NOI18N
 
         Fase.setText("Fase");
 
@@ -108,32 +171,61 @@ public class TelaEdicao extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NovaCartola, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NovoCanhao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NovoCarroPalhacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelMenuLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(LabelMenuLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(NovoCanhao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(NovaCartola1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(NovaCartola, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(NovaCartola8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(NovaCartola6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(NovoCarroPalhacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(NovoCarroPalhacao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(NovoCarroPalhacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(NovaCartola3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NovaCartola2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(NovaCartola4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NovaCartola5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LabelMenuLateral)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NovoCarroPalhacao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NovoCanhao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NovaCartola)
-                        .addGap(0, 138, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(LabelMenuLateral)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NovoCarroPalhacao1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NovoCarroPalhacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NovoCarroPalhacao2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NovoCanhao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NovaCartola)
+                    .addComponent(NovaCartola1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NovaCartola6)
+                    .addComponent(NovaCartola8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NovaCartola2)
+                    .addComponent(NovaCartola3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NovaCartola5)
+                    .addComponent(NovaCartola4)))
         );
 
         pack();
@@ -204,6 +296,34 @@ public class TelaEdicao extends javax.swing.JFrame {
         abaixoDoMouse=aux;
     }//GEN-LAST:event_MarcaObjeto
 
+    private void NovaCartola1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovaCartola1ActionPerformed
+
+    private void NovaCartola2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovaCartola2ActionPerformed
+
+    private void NovaCartola3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovaCartola3ActionPerformed
+
+    private void NovaCartola4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovaCartola4ActionPerformed
+
+    private void NovaCartola5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovaCartola5ActionPerformed
+
+    private void NovaCartola6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovaCartola6ActionPerformed
+
+    private void NovaCartola8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartola8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovaCartola8ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abria;
     private javax.swing.JMenu Ajuda;
@@ -211,8 +331,17 @@ public class TelaEdicao extends javax.swing.JFrame {
     private javax.swing.JMenu Fase;
     private javax.swing.JLabel LabelMenuLateral;
     private javax.swing.JButton NovaCartola;
+    private javax.swing.JButton NovaCartola1;
+    private javax.swing.JButton NovaCartola2;
+    private javax.swing.JButton NovaCartola3;
+    private javax.swing.JButton NovaCartola4;
+    private javax.swing.JButton NovaCartola5;
+    private javax.swing.JButton NovaCartola6;
+    private javax.swing.JButton NovaCartola8;
     private javax.swing.JButton NovoCanhao;
     private javax.swing.JButton NovoCarroPalhacao;
+    private javax.swing.JButton NovoCarroPalhacao1;
+    private javax.swing.JButton NovoCarroPalhacao2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
