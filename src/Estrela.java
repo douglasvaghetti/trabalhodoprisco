@@ -18,7 +18,7 @@ public class Estrela extends Objeto {
         this.setLargura(50);
         URL url;
         try {
-            url = new URL("file:///" + Ferramentas.getCodeBase() + "\\src\\imagens\\Cartola_Azul.png");
+            url = new URL("file:///" + Ferramentas.getCodeBase() + "\\src\\imagens\\Estrela.png");
             imgEstrela = ImageIO.read(url);
         } catch (MalformedURLException ex) {
             System.out.println("Erro ao formar a url da imagem.");
