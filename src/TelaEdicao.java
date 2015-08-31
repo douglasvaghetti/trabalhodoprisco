@@ -1,16 +1,12 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TelaEdicao extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaEdicao
-     */
     private Fase fase;
     private Objeto novoObjeto = null;
     private Objeto objetoMovido = null;
@@ -178,12 +174,7 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_MoveObjeto
 
     private void NovaCartolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaActionPerformed
-        try {
             novoObjeto = new Cartola(100, 100);
-        } catch (IOException ex) {
-            System.out.println("Não está achando a cartola!");
-            Logger.getLogger(TelaEdicao.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_NovaCartolaActionPerformed
 
     private void SoltaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoltaObjeto
