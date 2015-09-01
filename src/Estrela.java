@@ -14,8 +14,7 @@ public class Estrela extends Objeto {
 
     public Estrela(int x, int y)  {
         super(x, y);
-        this.setAltura(50);
-        this.setLargura(50);
+        
         URL url;
         try {
             url = new URL("file:///" + Ferramentas.getCodeBase() + "\\src\\imagens\\Estrela.png");
@@ -27,6 +26,8 @@ public class Estrela extends Objeto {
             System.out.println("Erro ao carregar imagem.");
             Logger.getLogger(Cartola.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.setAltura(imgEstrela.getHeight(null));
+        this.setLargura(imgEstrela.getWidth(null));
     }
 
     @Override

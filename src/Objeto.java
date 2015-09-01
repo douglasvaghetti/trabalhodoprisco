@@ -3,6 +3,7 @@ import java.awt.Graphics;
 
 public abstract class Objeto {
     private int x, y;
+    protected float cteEscalaGrafico=0.3f;
     private int largura, altura;
     protected double angulo = 0;
 
@@ -41,7 +42,7 @@ public abstract class Objeto {
     }
 
     public int getLargura() {
-        return largura;
+        return (int)(largura*cteEscalaGrafico);
     }
 
     public void setLargura(int largura) {
@@ -49,7 +50,7 @@ public abstract class Objeto {
     }
 
     public int getAltura() {
-        return altura;
+        return (int) (altura*cteEscalaGrafico);
     }
 
     public void setAltura(int altura) {

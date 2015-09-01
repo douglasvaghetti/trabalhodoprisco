@@ -24,8 +24,6 @@ public class CarroPalhaco extends Objeto{
     
     public CarroPalhaco(int x, int y) {
         super(x, y);
-        this.setAltura(50);
-        this.setLargura(50);
         URL url;
         try {
             url = new URL("file:///" + Ferramentas.getCodeBase() + "\\src\\imagens\\Pendulo.png");
@@ -37,6 +35,8 @@ public class CarroPalhaco extends Objeto{
             System.out.println("Erro ao carregar imagem.");
             Logger.getLogger(CarroPalhaco.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.setAltura(imgCarroPalhaco.getHeight(null));
+        this.setLargura(imgCarroPalhaco.getWidth(null));
     }
 
     @Override

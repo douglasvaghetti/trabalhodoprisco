@@ -14,8 +14,6 @@ public class Cartola extends Objeto{
     public enum Cor {Azul,Amarela,Vermelha,Verde};
     public Cartola(int x, int y,Cor cor) {
         super(x, y);
-        this.setAltura(50);
-        this.setLargura(50);
         URL url=criaURLCartola(cor);
         try {
             imgCartola = ImageIO.read(url);
@@ -23,6 +21,8 @@ public class Cartola extends Objeto{
             System.out.println("Erro ao carregar imagem.");
             Logger.getLogger(Cartola.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.setAltura(imgCartola.getHeight(null));
+        this.setLargura(imgCartola.getWidth(null));
     }
     private  URL criaURLCartola(Cor cor){
         URL url = null;
@@ -43,7 +43,7 @@ public class Cartola extends Objeto{
     }
     @Override
     public void desenha(Graphics g) {
-        g.drawImage(imgCartola, this.getX(), this.getY(), this.getLargura(), this.getAltura(), null);
+        g.drawImage(imgCartola, this.getX(), this.getY(),getLargura(),getAltura(),null);
     }
 
     @Override
