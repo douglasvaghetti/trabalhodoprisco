@@ -10,12 +10,23 @@ public class TelaEdicao extends javax.swing.JFrame {
     private Fase fase;
     private int numeroDeEstrelas=0;
     private Objeto novoObjeto = null;
+    private Objeto objetoSelecionado = null;
     private Objeto objetoMovido = null;
     private Objeto abaixoDoMouse = null;
     private boolean pega=true;
+    private boolean selecionado = false;
+    private int larguraFase;
+    private int alturaFase;
     public TelaEdicao(Fase fase) {
         this.fase = fase;
         initComponents();
+        larguraFase=Painel.getWidth();
+        alturaFase=Painel.getHeight();
+        SpinLargura.setValue(larguraFase);
+        SpinAltura.setValue(alturaFase);
+        setVisibilidadePosicao(false);
+        setVisibilidadeAngulo(false);
+        setVisibilidadeEscala(false);
     }
 
     /**
@@ -27,22 +38,35 @@ public class TelaEdicao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Estrela = new javax.swing.JButton();
-        LabelMenuLateral = new javax.swing.JLabel();
-        NovoCanhao = new javax.swing.JButton();
-        CartolaAzulDireita = new javax.swing.JButton();
-        CartolaAzulEsquerda = new javax.swing.JButton();
-        CartolaAmarelaDireita = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Painel = new javax.swing.JPanel();
+        posicaoX = new javax.swing.JSpinner();
+        posicaoY = new javax.swing.JSpinner();
+        x = new javax.swing.JLabel();
+        y = new javax.swing.JLabel();
+        SpinAngulo = new javax.swing.JSpinner();
+        Angulo = new javax.swing.JLabel();
+        Escala = new javax.swing.JLabel();
+        SpinEscala = new javax.swing.JSpinner();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        Plataforma = new javax.swing.JButton();
         CartolaAmarelaEsquerda = new javax.swing.JButton();
+        CartolaAzulEsquerda = new javax.swing.JButton();
+        NovoCanhao = new javax.swing.JButton();
+        Estrela = new javax.swing.JButton();
+        CartolaVerdeEsquerda = new javax.swing.JButton();
+        Macaco = new javax.swing.JButton();
+        CartolaAzulDireita = new javax.swing.JButton();
         CartolaVermelhaEsquerda = new javax.swing.JButton();
         CartolaVermelhaDireita = new javax.swing.JButton();
+        CartolaAmarelaDireita = new javax.swing.JButton();
         CartolaVerdeDireita = new javax.swing.JButton();
-        CartolaVerdeEsquerda = new javax.swing.JButton();
         CarroPalhacao = new javax.swing.JButton();
-        Macaco = new javax.swing.JButton();
-        Plataforma = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        SpinAltura = new javax.swing.JSpinner();
+        SpinLargura = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Fase = new javax.swing.JMenu();
         Abria = new javax.swing.JMenuItem();
@@ -50,29 +74,93 @@ public class TelaEdicao extends javax.swing.JFrame {
         Ajuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(200, 200));
 
-        Estrela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Estrela.png"))); // NOI18N
-        Estrela.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaEstrela(evt);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 800));
+
+        Painel.setBackground(new java.awt.Color(255, 255, 255));
+        Painel.setAutoscrolls(true);
+        Painel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Painel.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        Painel.setMinimumSize(new java.awt.Dimension(100, 100));
+        Painel.setPreferredSize(new java.awt.Dimension(100, 100));
+        Painel.setRequestFocusEnabled(false);
+        Painel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SelecionaObjeto(evt);
+                SoltaObjeto(evt);
+            }
+        });
+        Painel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                MarcaObjeto(evt);
+                MoveObjeto(evt);
             }
         });
 
-        LabelMenuLateral.setText("Novo:");
+        javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
+        Painel.setLayout(PainelLayout);
+        PainelLayout.setHorizontalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 604, Short.MAX_VALUE)
+        );
+        PainelLayout.setVerticalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
-        NovoCanhao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Canhao.png"))); // NOI18N
-        NovoCanhao.setText("Canhao");
-        NovoCanhao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovoCanhao(evt);
+        jScrollPane1.setViewportView(Painel);
+
+        posicaoX.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MudouValoremX(evt);
             }
         });
 
-        CartolaAzulDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Azul.png"))); // NOI18N
-        CartolaAzulDireita.addActionListener(new java.awt.event.ActionListener() {
+        posicaoY.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MudouValoremY(evt);
+            }
+        });
+
+        x.setText("X:");
+
+        y.setText("Y:");
+
+        SpinAngulo.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), null, Float.valueOf(359.9f), Float.valueOf(1.0f)));
+        SpinAngulo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MudaAngulo(evt);
+            }
+        });
+
+        Angulo.setText("Angulo:");
+
+        Escala.setText("Escala:");
+
+        SpinEscala.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), null, Float.valueOf(359.9f), Float.valueOf(1.0f)));
+        SpinEscala.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MudaEscala(evt);
+            }
+        });
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        Plataforma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Plataforma.png"))); // NOI18N
+        Plataforma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CartolaAzulDireitaAzulDireita(evt);
+                Plataforma(evt);
+            }
+        });
+
+        CartolaAmarelaEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
+        CartolaAmarelaEsquerda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartolaAmarelaEsquerda(evt);
             }
         });
 
@@ -83,17 +171,39 @@ public class TelaEdicao extends javax.swing.JFrame {
             }
         });
 
-        CartolaAmarelaDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
-        CartolaAmarelaDireita.addActionListener(new java.awt.event.ActionListener() {
+        NovoCanhao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Canhao.png"))); // NOI18N
+        NovoCanhao.setText("Canhao");
+        NovoCanhao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartolaAmarelaDireita(evt);
+                NovoCanhao(evt);
             }
         });
 
-        CartolaAmarelaEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
-        CartolaAmarelaEsquerda.addActionListener(new java.awt.event.ActionListener() {
+        Estrela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Estrela.png"))); // NOI18N
+        Estrela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartolaAmarelaEsquerda(evt);
+                NovaEstrela(evt);
+            }
+        });
+
+        CartolaVerdeEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
+        CartolaVerdeEsquerda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartolaVerdeEsquerda(evt);
+            }
+        });
+
+        Macaco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Macaco.png"))); // NOI18N
+        Macaco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovoMacaco(evt);
+            }
+        });
+
+        CartolaAzulDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Azul.png"))); // NOI18N
+        CartolaAzulDireita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CartolaAzulDireitaAzulDireita(evt);
             }
         });
 
@@ -111,17 +221,17 @@ public class TelaEdicao extends javax.swing.JFrame {
             }
         });
 
+        CartolaAmarelaDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Amarela.png"))); // NOI18N
+        CartolaAmarelaDireita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaCartolaAmarelaDireita(evt);
+            }
+        });
+
         CartolaVerdeDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
         CartolaVerdeDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NovaCartolaVerdeDireita(evt);
-            }
-        });
-
-        CartolaVerdeEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cartola_Verde.png"))); // NOI18N
-        CartolaVerdeEsquerda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaCartolaVerdeEsquerda(evt);
             }
         });
 
@@ -132,46 +242,80 @@ public class TelaEdicao extends javax.swing.JFrame {
             }
         });
 
-        Macaco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Macaco.png"))); // NOI18N
-        Macaco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovoMacaco(evt);
-            }
-        });
-
-        Plataforma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Plataforma.png"))); // NOI18N
-        Plataforma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Plataforma(evt);
-            }
-        });
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SelecionaObjeto(evt);
-                SoltaObjeto(evt);
-            }
-        });
-        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                MarcaObjeto(evt);
-                MoveObjeto(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(CarroPalhacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Macaco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(NovoCanhao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Plataforma, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Estrela, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(CartolaVermelhaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(CartolaAmarelaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(CartolaVerdeEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(CartolaAzulEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CartolaAzulDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(CartolaVerdeDireita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(CartolaVermelhaDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CartolaAmarelaDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(Estrela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addComponent(CarroPalhacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Macaco)
+                .addGap(5, 5, 5)
+                .addComponent(NovoCanhao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Plataforma, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CartolaAzulDireita)
+                    .addComponent(CartolaAzulEsquerda))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CartolaVerdeDireita)
+                    .addComponent(CartolaVerdeEsquerda))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CartolaAmarelaDireita)
+                    .addComponent(CartolaAmarelaEsquerda))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CartolaVermelhaDireita)
+                    .addComponent(CartolaVermelhaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(196, 196, 196))
         );
 
-        jScrollPane1.setViewportView(jPanel1);
+        jScrollPane2.setViewportView(jPanel2);
+
+        jLabel1.setText("Largura:");
+
+        SpinAltura.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MudaAltura(evt);
+            }
+        });
+
+        SpinLargura.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MudaLargura(evt);
+            }
+        });
+
+        jLabel2.setText("Altura:");
 
         Fase.setText("Fase");
 
@@ -199,67 +343,56 @@ public class TelaEdicao extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelMenuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(CarroPalhacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Estrela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Macaco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(NovoCanhao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Plataforma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CartolaAzulEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CartolaAzulDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CartolaVerdeEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CartolaVerdeDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CartolaAmarelaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CartolaAmarelaDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CartolaVermelhaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CartolaVermelhaDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SpinLargura, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SpinAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(x)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(posicaoX, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(y)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(posicaoY, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Angulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SpinAngulo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Escala)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SpinEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 144, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(LabelMenuLateral)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(posicaoX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(posicaoY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(x)
+                    .addComponent(y)
+                    .addComponent(SpinAngulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Angulo)
+                    .addComponent(Escala)
+                    .addComponent(SpinEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(SpinAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SpinLargura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CarroPalhacao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Estrela)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Macaco)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NovoCanhao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(Plataforma, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CartolaAzulDireita)
-                    .addComponent(CartolaAzulEsquerda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CartolaVerdeDireita)
-                    .addComponent(CartolaVerdeEsquerda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CartolaAmarelaDireita)
-                    .addComponent(CartolaAmarelaEsquerda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CartolaVermelhaDireita)
-                    .addComponent(CartolaVermelhaEsquerda))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)))
         );
 
         pack();
@@ -274,65 +407,73 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_NovoCanhao
 
     private void CartolaAzulDireitaAzulDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CartolaAzulDireitaAzulDireita
-            objetoMovido = new Cartola(100, 100,Cartola.Cor.Azul);
+            NovaCartola(Cartola.Cor.Azul);
             CartolaAzulDireita.setEnabled(false);
-            fase.adicionaObjeto(objetoMovido);
     }//GEN-LAST:event_CartolaAzulDireitaAzulDireita
 
     private void CartolaAzulEsquerdaAzulEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CartolaAzulEsquerdaAzulEsquerda
-        objetoMovido = new Cartola(100, 100,Cartola.Cor.Azul);
+        NovaCartola(Cartola.Cor.Azul);
         CartolaAzulEsquerda.setEnabled(false);
-        fase.adicionaObjeto(objetoMovido);
     }//GEN-LAST:event_CartolaAzulEsquerdaAzulEsquerda
 
     private void NovaCartolaAmarelaDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaAmarelaDireita
-        novoObjeto = new Cartola(100, 100,Cartola.Cor.Amarela);
+        NovaCartola(Cartola.Cor.Amarela);
         CartolaAmarelaDireita.setEnabled(false);
     }//GEN-LAST:event_NovaCartolaAmarelaDireita
 
     private void NovaCartolaAmarelaEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaAmarelaEsquerda
-        novoObjeto = new Cartola(100, 100,Cartola.Cor.Amarela);
+        NovaCartola(Cartola.Cor.Amarela);
         CartolaAmarelaEsquerda.setEnabled(false);
     }//GEN-LAST:event_NovaCartolaAmarelaEsquerda
 
     private void NovaCartolaVermelhaEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaVermelhaEsquerda
-        novoObjeto = new Cartola(100, 100,Cartola.Cor.Vermelha);
+        NovaCartola(Cartola.Cor.Vermelha);
         CartolaVermelhaEsquerda.setEnabled(false);
     }//GEN-LAST:event_NovaCartolaVermelhaEsquerda
 
     private void NovaCartolaVermelhaDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaVermelhaDireita
-        novoObjeto = new Cartola(100, 100,Cartola.Cor.Vermelha);
+        NovaCartola(Cartola.Cor.Vermelha);
         CartolaVermelhaDireita.setEnabled(false);
     }//GEN-LAST:event_NovaCartolaVermelhaDireita
 
     private void NovaCartolaVerdeDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaVerdeDireita
-        novoObjeto = new Cartola(100, 100,Cartola.Cor.Verde);
+        NovaCartola(Cartola.Cor.Verde);
         CartolaVerdeDireita.setEnabled(false);
     }//GEN-LAST:event_NovaCartolaVerdeDireita
 
     private void NovaCartolaVerdeEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaCartolaVerdeEsquerda
-        novoObjeto = new Cartola(100, 100,Cartola.Cor.Verde);
+        NovaCartola(Cartola.Cor.Verde);
         CartolaVerdeEsquerda.setEnabled(false);
     }//GEN-LAST:event_NovaCartolaVerdeEsquerda
 
+    private void NovaCartola(Cartola.Cor cor){
+        objetoMovido = new Cartola(100, 100,cor);
+        CartolaVermelhaDireita.setEnabled(false);
+        fase.adicionaObjeto(objetoMovido);
+    }
+    
     private void NovoCarroPalhacao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoCarroPalhacao
-        novoObjeto = new CarroPalhaco(100, 100);
+        objetoMovido = new CarroPalhaco(100, 100);
+        fase.adicionaObjeto(objetoMovido);
     }//GEN-LAST:event_NovoCarroPalhacao
 
     private void NovaEstrela(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaEstrela
-        novoObjeto= new Estrela(100, 100);
+        objetoMovido= new Estrela(100, 100);
         numeroDeEstrelas++;
+        fase.adicionaObjeto(objetoMovido);
         if(numeroDeEstrelas==3)
             Estrela.setEnabled(false);
     }//GEN-LAST:event_NovaEstrela
 
     private void NovoMacaco(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoMacaco
-        novoObjeto=new Macaco(100,100);
+        objetoMovido=new Macaco(100,100);
         Macaco.setEnabled(false);
+        fase.adicionaObjeto(objetoMovido);
     }//GEN-LAST:event_NovoMacaco
 
     private void Plataforma(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plataforma
-        novoObjeto=new Plataforma(100, 100);
+        objetoMovido=new Plataforma(100, 100);
+        fase.adicionaObjeto(objetoMovido);
     }//GEN-LAST:event_Plataforma
 
     private void MarcaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarcaObjeto
@@ -347,17 +488,21 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_MarcaObjeto
 
     private void MoveObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoveObjeto
-        Graphics g = jPanel1.getGraphics();
+        Graphics g = Painel.getGraphics();
         g.setColor(Color.white);
-        g.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
+        g.fillRect(0, 0, Painel.getWidth(), Painel.getHeight());
 
         for(Objeto atuador: fase.getAtuadores()){
             atuador.desenha(g);
         }
 
         if(objetoMovido != null){
+            selecionado=true;
+            setVisibilidadePosicao(selecionado);
             objetoMovido.setX(evt.getX());
             objetoMovido.setY(evt.getY());
+            posicaoX.setValue(evt.getX());
+            posicaoY.setValue(evt.getY());
             objetoMovido.desenha(g);
             g.setColor(Color.RED);
             g.drawRect(objetoMovido.getX(), objetoMovido.getY(), objetoMovido.getLargura(), objetoMovido.getAltura());
@@ -365,13 +510,40 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_MoveObjeto
 
     private void SelecionaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelecionaObjeto
-        if(abaixoDoMouse != null && novoObjeto == null && objetoMovido==null){
-            objetoMovido = abaixoDoMouse;
-            System.out.println("chou novo abaixo do mouse");
-            pega=true;
+        if(!evt.isControlDown()){
+            if(abaixoDoMouse != null && novoObjeto == null && objetoMovido==null){
+                objetoMovido = abaixoDoMouse;
+                System.out.println("chou novo abaixo do mouse");
+                pega=true;
+            }
+            objetoSelecionado=null;
+            selecionado=false;
+            setVisibilidadeAngulo(false);
+            setVisibilidadeEscala(false);
         }
+        else{
+            if(abaixoDoMouse != null && objetoMovido==null){
+                objetoSelecionado=abaixoDoMouse;
+                pega=true;
+                selecionado=true;
+                posicaoX.setValue(objetoSelecionado.getX());
+                posicaoY.setValue(objetoSelecionado.getY());
+                if(!objetoSelecionado.getAnguloFixo()){
+                    setVisibilidadeAngulo(selecionado);
+                    SpinAngulo.setValue(objetoSelecionado.getAngulo());
+                }
+                if(objetoSelecionado.isEscalavel()){
+                    setVisibilidadeEscala(selecionado);
+                    SpinEscala.setValue(objetoSelecionado.getEscalaX());
+                }
+            }
+        }
+            setVisibilidadePosicao(selecionado);
+    
     }//GEN-LAST:event_SelecionaObjeto
 
+    
+    
     private void SoltaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoltaObjeto
         if(objetoMovido!=null && !pega){
             
@@ -382,9 +554,56 @@ public class TelaEdicao extends javax.swing.JFrame {
         
     }//GEN-LAST:event_SoltaObjeto
 
+    private void MudouValoremX(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudouValoremX
+        if(objetoSelecionado!=null)
+            objetoSelecionado.setX( Integer.parseInt(posicaoX.getValue().toString()));
+    }//GEN-LAST:event_MudouValoremX
+
+    private void MudouValoremY(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudouValoremY
+        if(objetoSelecionado!=null)
+            objetoSelecionado.setY( Integer.parseInt(posicaoY.getValue().toString()));
+    }//GEN-LAST:event_MudouValoremY
+
+    private void MudaAngulo(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudaAngulo
+        if(objetoSelecionado!=null && !objetoSelecionado.getAnguloFixo())
+            objetoSelecionado.setAngulo(Float.parseFloat(SpinAngulo.getValue().toString()));
+    }//GEN-LAST:event_MudaAngulo
+
+    private void MudaEscala(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudaEscala
+        if(objetoSelecionado!=null && objetoSelecionado.isEscalavel())
+            objetoSelecionado.setEscalaX(Float.parseFloat(SpinEscala.getValue().toString()));
+    }//GEN-LAST:event_MudaEscala
+
+    private void MudaLargura(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudaLargura
+        larguraFase=Integer.parseInt(SpinLargura.getValue().toString());
+        Painel.setSize(larguraFase, alturaFase);
+    }//GEN-LAST:event_MudaLargura
+
+    private void MudaAltura(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudaAltura
+        alturaFase=Integer.parseInt(SpinAltura.getValue().toString());
+        Painel.setSize(larguraFase, alturaFase);
+    }//GEN-LAST:event_MudaAltura
+
+    private void setVisibilidadePosicao(boolean visivel){
+        posicaoX.setVisible(visivel);
+        posicaoY.setVisible(visivel);
+        x.setVisible(visivel);
+        y.setVisible(visivel);
+    }
+    private void setVisibilidadeAngulo(boolean visivel){
+        Angulo.setVisible(visivel);
+        SpinAngulo.setVisible(visivel);
+    }
+   
+    private void setVisibilidadeEscala(boolean visivel){
+        Escala.setVisible(visivel);
+        SpinEscala.setVisible(visivel);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abria;
     private javax.swing.JMenu Ajuda;
+    private javax.swing.JLabel Angulo;
     private javax.swing.JButton CarroPalhacao;
     private javax.swing.JButton CartolaAmarelaDireita;
     private javax.swing.JButton CartolaAmarelaEsquerda;
@@ -394,15 +613,27 @@ public class TelaEdicao extends javax.swing.JFrame {
     private javax.swing.JButton CartolaVerdeEsquerda;
     private javax.swing.JButton CartolaVermelhaDireita;
     private javax.swing.JButton CartolaVermelhaEsquerda;
+    private javax.swing.JLabel Escala;
     private javax.swing.JButton Estrela;
     private javax.swing.JMenuItem Exporta;
     private javax.swing.JMenu Fase;
-    private javax.swing.JLabel LabelMenuLateral;
     private javax.swing.JButton Macaco;
     private javax.swing.JButton NovoCanhao;
+    private javax.swing.JPanel Painel;
     private javax.swing.JButton Plataforma;
+    private javax.swing.JSpinner SpinAltura;
+    private javax.swing.JSpinner SpinAngulo;
+    private javax.swing.JSpinner SpinEscala;
+    private javax.swing.JSpinner SpinLargura;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner posicaoX;
+    private javax.swing.JSpinner posicaoY;
+    private javax.swing.JLabel x;
+    private javax.swing.JLabel y;
     // End of variables declaration//GEN-END:variables
 }

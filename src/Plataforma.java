@@ -23,7 +23,7 @@ public class Plataforma extends Objeto{
     private Image imgPlataforma;
     
     public Plataforma(int x, int y) {
-        super(x, y);
+        super(x, y,false,true);
         
         URL url;
         try {

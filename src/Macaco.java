@@ -12,7 +12,7 @@ public class Macaco extends Objeto{
     private Image imgMacaco;
     
     public Macaco(int x, int y) {
-        super(x, y);
+        super(x, y,90,true);
         URL url;
         try {
             url = new URL("file:///" + Ferramentas.getCodeBase() + "\\src\\imagens\\Macaco.png");

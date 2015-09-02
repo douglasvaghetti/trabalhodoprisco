@@ -13,7 +13,7 @@ public class Cartola extends Objeto{
     private Image imgCartola;
     public enum Cor {Azul,Amarela,Vermelha,Verde};
     public Cartola(int x, int y,Cor cor) {
-        super(x, y);
+        super(x, y,false);
         URL url=criaURLCartola(cor);
         try {
             imgCartola = ImageIO.read(url);

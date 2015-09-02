@@ -5,11 +5,33 @@ public abstract class Objeto {
     private int x, y;
     protected float cteEscalaGrafico=0.3f;
     private int largura, altura;
-    protected double angulo = 0;
+    private float angulo = 0.0f;
+    private boolean anguloFixo;
+    private float escalaX;
+    private boolean escalavel;
+  
 
-    public Objeto(int x, int y) {
+    public Objeto(int x, int y,boolean anguloFixo) {
         this.x = x;
         this.y = y;
+        this.anguloFixo=anguloFixo;
+        this.escalaX=1.0f;
+    }
+    
+    public Objeto(int x, int y,boolean anguloFixo,boolean escalavel) {
+        this.x = x;
+        this.y = y;
+        this.anguloFixo=anguloFixo;
+        this.escalaX=1.0f;
+        this.escalavel=escalavel;
+        
+    }
+    public Objeto(int x, int y, float angulo,boolean anguloFixo){
+        this.x=x;
+        this.y=y;
+        this.angulo=angulo;
+        this.anguloFixo=anguloFixo;
+        this.escalaX=1.0f;
     }
     
     abstract public void desenha(Graphics g);
@@ -42,7 +64,7 @@ public abstract class Objeto {
     }
 
     public int getLargura() {
-        return (int)(largura*cteEscalaGrafico);
+        return (int)(largura*cteEscalaGrafico*getEscalaX());
     }
 
     public void setLargura(int largura) {
@@ -55,6 +77,40 @@ public abstract class Objeto {
 
     public void setAltura(int altura) {
         this.altura = altura;
+    }
+    public boolean getAnguloFixo(){
+        return anguloFixo;
+    }
+
+    
+    public float getAngulo() {
+        return angulo;
+    }
+
+    
+    public void setAngulo(float angulo) {
+        this.angulo = angulo;
+    }
+
+    /**
+     * @return the escalaX
+     */
+    public float getEscalaX() {
+        return escalaX;
+    }
+
+    /**
+     * @param escalaX the escalaX to set
+     */
+    public void setEscalaX(float escalaX) {
+        this.escalaX = escalaX;
+    }
+
+    /**
+     * @return the escalavel
+     */
+    public boolean isEscalavel() {
+        return escalavel;
     }
     
     

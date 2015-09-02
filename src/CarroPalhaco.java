@@ -23,7 +23,7 @@ public class CarroPalhaco extends Objeto{
     private Image imgCarroPalhaco;
     
     public CarroPalhaco(int x, int y) {
-        super(x, y);
+        super(x, y,true);
         URL url;
         try {
             url = new URL("file:///" + Ferramentas.getCodeBase() + "\\src\\imagens\\Pendulo.png");

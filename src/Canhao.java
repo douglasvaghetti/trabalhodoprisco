@@ -4,7 +4,7 @@ import java.awt.Graphics;
 public class Canhao extends Objeto{
 
     public Canhao(int x, int y) {
-        super(x, y);
+        super(x, y,false);
     }
 
     @Override

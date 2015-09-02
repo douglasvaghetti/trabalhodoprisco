@@ -13,7 +13,7 @@ public class Estrela extends Objeto {
     private Image imgEstrela;
 
     public Estrela(int x, int y)  {
-        super(x, y);
+        super(x, y,true);
         
         URL url;
         try {
