@@ -8,16 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Joelzinho
- */
 public class CarroPalhaco extends Objeto{
     
     private Image imgCarroPalhaco;
@@ -45,8 +35,12 @@ public class CarroPalhaco extends Objeto{
     }
 
     @Override
-    public void getXML() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getXML() {
+        String xml ="";
+        xml += "<Objeto tipo='carropalhaco'>";
+        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
+        xml += "</Objeto>";                
+        return xml;
     }
     
 }

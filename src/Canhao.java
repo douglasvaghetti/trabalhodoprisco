@@ -13,8 +13,9 @@ public class Canhao extends Objeto{
     }
 
     @Override
-    public void getXML() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getXML() {
+        return "<Objeto tipo='canhao'>"
+                + "</Objeto>";
     }
     
 }

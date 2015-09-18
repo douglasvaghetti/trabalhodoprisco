@@ -36,7 +36,7 @@ public abstract class Objeto {
     
     abstract public void desenha(Graphics g);
     
-    abstract public void getXML();
+    abstract public String getXML();
 
     public boolean colisao(int x, int y) {
         if(x > this.getX() && x < this.getX()+this.getLargura()){

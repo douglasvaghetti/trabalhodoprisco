@@ -34,8 +34,12 @@ public class Macaco extends Objeto{
     }
 
     @Override
-    public void getXML() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getXML() {
+        String xml ="";
+        xml += "<Objeto tipo='macaco'>";
+        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
+        xml += "</Objeto>";                
+        return xml;
     }
     
 }

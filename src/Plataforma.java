@@ -45,9 +45,13 @@ public class Plataforma extends Objeto{
         g.drawImage(imgPlataforma, this.getX(), this.getY(), this.getLargura(), this.getAltura(), null);
     }
 
-    @Override
-    public void getXML() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     @Override
+    public String getXML() {
+        String xml ="";
+        xml += "<Objeto tipo='plataforma'>";
+        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
+        xml += "</Objeto>";                
+        return xml;
     }
     
 }

@@ -36,8 +36,12 @@ public class Estrela extends Objeto {
     }
 
     @Override
-    public void getXML() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getXML() {
+        String xml ="";
+        xml += "<Objeto tipo='estrela'>";
+        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
+        xml += "</Objeto>";                
+        return xml;
     }
 
 }

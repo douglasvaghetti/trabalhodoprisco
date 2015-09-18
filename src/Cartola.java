@@ -12,9 +12,13 @@ public class Cartola extends Objeto{
     
     private Image imgCartola;
     public enum Cor {Azul,Amarela,Vermelha,Verde};
-    public Cartola(int x, int y,Cor cor) {
+    
+    private Cor corcartola;
+    
+    public Cartola(int x, int y, Cor cor) {
         super(x, y,false);
-        URL url=criaURLCartola(cor);
+        corcartola = cor;
+        URL url=criaURLCartola();
         try {
             imgCartola = ImageIO.read(url);
         }catch (IOException ex) {
@@ -24,16 +28,16 @@ public class Cartola extends Objeto{
         this.setAltura(imgCartola.getHeight(null));
         this.setLargura(imgCartola.getWidth(null));
     }
-    private  URL criaURLCartola(Cor cor){
+    private  URL criaURLCartola(){
         URL url = null;
          try {
-            if(cor==Cor.Azul)
+            if(corcartola==Cor.Azul)
                 url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Azul.png");
-            else if(cor==Cor.Amarela)
+            else if(corcartola==Cor.Amarela)
                 url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Amarela.png");
-            else if(cor==Cor.Verde)
+            else if(corcartola==Cor.Verde)
                 url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Verde.png");
-            else if(cor==Cor.Vermelha)
+            else if(corcartola==Cor.Vermelha)
                 url = new URL("file:///"+Ferramentas.getCodeBase()+"\\src\\imagens\\Cartola_Vermelha.png");
         } catch (MalformedURLException ex) {
             System.out.println("Erro ao formar a url da imagem.");
@@ -45,10 +49,16 @@ public class Cartola extends Objeto{
     public void desenha(Graphics g) {
         g.drawImage(imgCartola, this.getX(), this.getY(),getLargura(),getAltura(),null);
     }
+    
+    
 
     @Override
-    public void getXML() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getXML() {
+    String xml ="";
+        xml += "<Objeto tipo='cartola' cor='"+corcartola.name()+"'>";
+        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
+        xml += "</Objeto>";                
+        return xml;
     }
     
 }
