@@ -1,6 +1,8 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import static java.awt.image.BufferedImage.TYPE_4BYTE_ABGR;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -515,9 +517,11 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_MarcaObjeto
 
     private void MoveObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoveObjeto
-        Graphics g = Painel.getGraphics();
+        BufferedImage buffer = new BufferedImage(Painel.getWidth(), Painel.getHeight(), TYPE_4BYTE_ABGR);
+        Graphics g = buffer.getGraphics();
+        Graphics desenha = Painel.getGraphics();
         g.setColor(Color.white);
-        g.fillRect(0, 0, Painel.getWidth(), Painel.getHeight());
+        g.fillRect(0, 0, buffer.getWidth(), buffer.getHeight());
 
         for (Objeto atuador : fase.getAtuadores()) {
             atuador.desenha(g);
@@ -534,13 +538,13 @@ public class TelaEdicao extends javax.swing.JFrame {
             g.setColor(Color.RED);
             g.drawRect(objetoMovido.getX(), objetoMovido.getY(), objetoMovido.getLargura(), objetoMovido.getAltura());
         }
+        desenha.drawImage(buffer, 0, 0, null);
     }//GEN-LAST:event_MoveObjeto
 
     private void SelecionaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelecionaObjeto
         if (!evt.isControlDown()) {
             if (abaixoDoMouse != null && novoObjeto == null && objetoMovido == null) {
                 objetoMovido = abaixoDoMouse;
-                System.out.println("chou novo abaixo do mouse");
                 pega = true;
             }
             objetoSelecionado = null;
