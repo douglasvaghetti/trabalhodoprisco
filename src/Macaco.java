@@ -36,9 +36,9 @@ public class Macaco extends Objeto{
     @Override
     public String getXML() {
         String xml ="";
-        xml += "<Objeto tipo='macaco'>";
-        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
-        xml += "</Objeto>";                
+        xml += "     <Objeto tipo='macaco'>\n";
+        xml += "          <Posicao x='"+getX()+"' y='"+getY()+"' altura='"+getAltura()+"' largura='"+getLargura()+"'>\n";
+        xml += "     </Objeto>";                
         return xml;
     }
     

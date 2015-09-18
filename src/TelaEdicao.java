@@ -1,27 +1,34 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 public class TelaEdicao extends javax.swing.JFrame {
 
     private Fase fase;
-    private int numeroDeEstrelas=0;
+    private int numeroDeEstrelas = 0;
     private Objeto novoObjeto = null;
     private Objeto objetoSelecionado = null;
     private Objeto objetoMovido = null;
     private Objeto abaixoDoMouse = null;
-    private boolean pega=true;
+    private boolean pega = true;
     private boolean selecionado = false;
     private int larguraFase;
     private int alturaFase;
+
     public TelaEdicao(Fase fase) {
         this.fase = fase;
         initComponents();
-        larguraFase=Painel.getWidth();
-        alturaFase=Painel.getHeight();
+        larguraFase = Painel.getWidth();
+        alturaFase = Painel.getHeight();
         SpinLargura.setValue(larguraFase);
         SpinAltura.setValue(alturaFase);
         setVisibilidadePosicao(false);
@@ -69,7 +76,6 @@ public class TelaEdicao extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Fase = new javax.swing.JMenu();
-        Abria = new javax.swing.JMenuItem();
         Exporta = new javax.swing.JMenuItem();
         Ajuda = new javax.swing.JMenu();
 
@@ -256,8 +262,8 @@ public class TelaEdicao extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(CartolaVermelhaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(CartolaAmarelaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(CartolaVerdeEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(CartolaAmarelaEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(CartolaVerdeEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(CartolaAzulEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,12 +291,12 @@ public class TelaEdicao extends javax.swing.JFrame {
                     .addComponent(CartolaAzulDireita)
                     .addComponent(CartolaAzulEsquerda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CartolaVerdeDireita)
                     .addComponent(CartolaVerdeEsquerda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CartolaAmarelaDireita)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CartolaAmarelaDireita, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(CartolaAmarelaEsquerda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,9 +324,6 @@ public class TelaEdicao extends javax.swing.JFrame {
         jLabel2.setText("Altura:");
 
         Fase.setText("Fase");
-
-        Abria.setText("Abrir");
-        Fase.add(Abria);
 
         Exporta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, 0));
         Exporta.setText("Exportar");
@@ -399,7 +402,30 @@ public class TelaEdicao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ExportaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportaActionPerformed
-        // TODO add your handling code here:
+        JFileChooser file = new JFileChooser();
+        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int i = file.showSaveDialog(null);
+        if (i == 1) {
+            JOptionPane.showMessageDialog(null, "Erro ao criar arquivo!");
+        } else {
+            File arquivo = file.getSelectedFile();
+            try {
+                PrintWriter escreve = new PrintWriter(arquivo);
+                
+                escreve.println("<Fase>\n");
+                for (Objeto atuador : fase.getAtuadores()) {
+                    escreve.println(atuador.getXML());
+                }
+                
+                escreve.println("</Fase>\n");
+                
+                escreve.close();
+                
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(TelaEdicao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }//GEN-LAST:event_ExportaActionPerformed
 
     private void NovoCanhao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoCanhao
@@ -407,8 +433,8 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_NovoCanhao
 
     private void CartolaAzulDireitaAzulDireita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CartolaAzulDireitaAzulDireita
-            NovaCartola(Cartola.Cor.Azul);
-            CartolaAzulDireita.setEnabled(false);
+        NovaCartola(Cartola.Cor.Azul);
+        CartolaAzulDireita.setEnabled(false);
     }//GEN-LAST:event_CartolaAzulDireitaAzulDireita
 
     private void CartolaAzulEsquerdaAzulEsquerda(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CartolaAzulEsquerdaAzulEsquerda
@@ -446,45 +472,46 @@ public class TelaEdicao extends javax.swing.JFrame {
         CartolaVerdeEsquerda.setEnabled(false);
     }//GEN-LAST:event_NovaCartolaVerdeEsquerda
 
-    private void NovaCartola(Cartola.Cor cor){
-        objetoMovido = new Cartola(100, 100,cor);
+    private void NovaCartola(Cartola.Cor cor) {
+        objetoMovido = new Cartola(100, 100, cor);
         CartolaVermelhaDireita.setEnabled(false);
         fase.adicionaObjeto(objetoMovido);
     }
-    
+
     private void NovoCarroPalhacao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoCarroPalhacao
         objetoMovido = new CarroPalhaco(100, 100);
         fase.adicionaObjeto(objetoMovido);
     }//GEN-LAST:event_NovoCarroPalhacao
 
     private void NovaEstrela(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaEstrela
-        objetoMovido= new Estrela(100, 100);
+        objetoMovido = new Estrela(100, 100);
         numeroDeEstrelas++;
         fase.adicionaObjeto(objetoMovido);
-        if(numeroDeEstrelas==3)
+        if (numeroDeEstrelas == 3) {
             Estrela.setEnabled(false);
+        }
     }//GEN-LAST:event_NovaEstrela
 
     private void NovoMacaco(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoMacaco
-        objetoMovido=new Macaco(100,100);
+        objetoMovido = new Macaco(100, 100);
         Macaco.setEnabled(false);
         fase.adicionaObjeto(objetoMovido);
     }//GEN-LAST:event_NovoMacaco
 
     private void Plataforma(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plataforma
-        objetoMovido=new Plataforma(100, 100);
+        objetoMovido = new Plataforma(100, 100);
         fase.adicionaObjeto(objetoMovido);
     }//GEN-LAST:event_Plataforma
 
     private void MarcaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarcaObjeto
         Objeto aux = null;
-        for(Objeto atuador: fase.getAtuadores()){
-            if(atuador.colisao(evt.getX(), evt.getY())){
+        for (Objeto atuador : fase.getAtuadores()) {
+            if (atuador.colisao(evt.getX(), evt.getY())) {
                 aux = atuador;
                 System.out.println("objeto abaixo do mouse");
             }
         }
-        abaixoDoMouse=aux;
+        abaixoDoMouse = aux;
     }//GEN-LAST:event_MarcaObjeto
 
     private void MoveObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoveObjeto
@@ -492,12 +519,12 @@ public class TelaEdicao extends javax.swing.JFrame {
         g.setColor(Color.white);
         g.fillRect(0, 0, Painel.getWidth(), Painel.getHeight());
 
-        for(Objeto atuador: fase.getAtuadores()){
+        for (Objeto atuador : fase.getAtuadores()) {
             atuador.desenha(g);
         }
 
-        if(objetoMovido != null){
-            selecionado=true;
+        if (objetoMovido != null) {
+            selecionado = true;
             setVisibilidadePosicao(selecionado);
             objetoMovido.setX(evt.getX());
             objetoMovido.setY(evt.getY());
@@ -510,98 +537,100 @@ public class TelaEdicao extends javax.swing.JFrame {
     }//GEN-LAST:event_MoveObjeto
 
     private void SelecionaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelecionaObjeto
-        if(!evt.isControlDown()){
-            if(abaixoDoMouse != null && novoObjeto == null && objetoMovido==null){
+        if (!evt.isControlDown()) {
+            if (abaixoDoMouse != null && novoObjeto == null && objetoMovido == null) {
                 objetoMovido = abaixoDoMouse;
                 System.out.println("chou novo abaixo do mouse");
-                pega=true;
+                pega = true;
             }
-            objetoSelecionado=null;
-            selecionado=false;
+            objetoSelecionado = null;
+            selecionado = false;
             setVisibilidadeAngulo(false);
             setVisibilidadeEscala(false);
-        }
-        else{
-            if(abaixoDoMouse != null && objetoMovido==null){
-                objetoSelecionado=abaixoDoMouse;
-                pega=true;
-                selecionado=true;
+        } else {
+            if (abaixoDoMouse != null && objetoMovido == null) {
+                objetoSelecionado = abaixoDoMouse;
+                pega = true;
+                selecionado = true;
                 posicaoX.setValue(objetoSelecionado.getX());
                 posicaoY.setValue(objetoSelecionado.getY());
-                if(!objetoSelecionado.getAnguloFixo()){
+                if (!objetoSelecionado.getAnguloFixo()) {
                     setVisibilidadeAngulo(selecionado);
                     SpinAngulo.setValue(objetoSelecionado.getAngulo());
                 }
-                if(objetoSelecionado.isEscalavel()){
+                if (objetoSelecionado.isEscalavel()) {
                     setVisibilidadeEscala(selecionado);
                     SpinEscala.setValue(objetoSelecionado.getEscalaX());
                 }
             }
         }
-            setVisibilidadePosicao(selecionado);
-    
+        setVisibilidadePosicao(selecionado);
+
     }//GEN-LAST:event_SelecionaObjeto
 
-    
-    
+
     private void SoltaObjeto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoltaObjeto
-        if(objetoMovido!=null && !pega){
-            
+        if (objetoMovido != null && !pega) {
+
             System.out.println("adicionou objeto");
             objetoMovido = null;
         }
         pega = false;
-        
+
     }//GEN-LAST:event_SoltaObjeto
 
     private void MudouValoremX(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudouValoremX
-        if(objetoSelecionado!=null)
-            objetoSelecionado.setX( Integer.parseInt(posicaoX.getValue().toString()));
+        if (objetoSelecionado != null) {
+            objetoSelecionado.setX(Integer.parseInt(posicaoX.getValue().toString()));
+        }
     }//GEN-LAST:event_MudouValoremX
 
     private void MudouValoremY(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudouValoremY
-        if(objetoSelecionado!=null)
-            objetoSelecionado.setY( Integer.parseInt(posicaoY.getValue().toString()));
+        if (objetoSelecionado != null) {
+            objetoSelecionado.setY(Integer.parseInt(posicaoY.getValue().toString()));
+        }
     }//GEN-LAST:event_MudouValoremY
 
     private void MudaAngulo(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudaAngulo
-        if(objetoSelecionado!=null && !objetoSelecionado.getAnguloFixo())
+        if (objetoSelecionado != null && !objetoSelecionado.getAnguloFixo()) {
             objetoSelecionado.setAngulo(Float.parseFloat(SpinAngulo.getValue().toString()));
+        }
     }//GEN-LAST:event_MudaAngulo
 
     private void MudaEscala(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudaEscala
-        if(objetoSelecionado!=null && objetoSelecionado.isEscalavel())
+        if (objetoSelecionado != null && objetoSelecionado.isEscalavel()) {
             objetoSelecionado.setEscalaX(Float.parseFloat(SpinEscala.getValue().toString()));
+        }
     }//GEN-LAST:event_MudaEscala
 
     private void MudaLargura(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudaLargura
-        larguraFase=Integer.parseInt(SpinLargura.getValue().toString());
+        larguraFase = Integer.parseInt(SpinLargura.getValue().toString());
         Painel.setSize(larguraFase, alturaFase);
     }//GEN-LAST:event_MudaLargura
 
     private void MudaAltura(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MudaAltura
-        alturaFase=Integer.parseInt(SpinAltura.getValue().toString());
+        alturaFase = Integer.parseInt(SpinAltura.getValue().toString());
         Painel.setSize(larguraFase, alturaFase);
     }//GEN-LAST:event_MudaAltura
 
-    private void setVisibilidadePosicao(boolean visivel){
+    private void setVisibilidadePosicao(boolean visivel) {
         posicaoX.setVisible(visivel);
         posicaoY.setVisible(visivel);
         x.setVisible(visivel);
         y.setVisible(visivel);
     }
-    private void setVisibilidadeAngulo(boolean visivel){
+
+    private void setVisibilidadeAngulo(boolean visivel) {
         Angulo.setVisible(visivel);
         SpinAngulo.setVisible(visivel);
     }
-   
-    private void setVisibilidadeEscala(boolean visivel){
+
+    private void setVisibilidadeEscala(boolean visivel) {
         Escala.setVisible(visivel);
         SpinEscala.setVisible(visivel);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Abria;
     private javax.swing.JMenu Ajuda;
     private javax.swing.JLabel Angulo;
     private javax.swing.JButton CarroPalhacao;

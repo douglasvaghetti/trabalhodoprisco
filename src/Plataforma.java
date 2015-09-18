@@ -48,9 +48,9 @@ public class Plataforma extends Objeto{
      @Override
     public String getXML() {
         String xml ="";
-        xml += "<Objeto tipo='plataforma'>";
-        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
-        xml += "</Objeto>";                
+        xml += "     <Objeto tipo='plataforma'>\n";
+        xml += "          <Posicao x='"+getX()+"' y='"+getY()+"' altura='"+getAltura()+"' largura='"+getLargura()+"'>\n";
+        xml += "     </Objeto>";                
         return xml;
     }
     

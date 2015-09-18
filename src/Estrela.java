@@ -38,9 +38,9 @@ public class Estrela extends Objeto {
     @Override
     public String getXML() {
         String xml ="";
-        xml += "<Objeto tipo='estrela'>";
-        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
-        xml += "</Objeto>";                
+        xml += "     <Objeto tipo='estrela'>\n";
+        xml += "          <Posicao x='"+getX()+"' y='"+getY()+"' altura='"+getAltura()+"' largura='"+getLargura()+"'>\n";
+        xml += "     </Objeto>";                
         return xml;
     }
 

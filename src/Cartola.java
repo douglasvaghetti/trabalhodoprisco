@@ -55,9 +55,9 @@ public class Cartola extends Objeto{
     @Override
     public String getXML() {
     String xml ="";
-        xml += "<Objeto tipo='cartola' cor='"+corcartola.name()+"'>";
-        xml += "     <Posicao x='"+getX()+"' y="+getY()+" altura='"+getAltura()+"' largura='"+getLargura()+"'>";
-        xml += "</Objeto>";                
+        xml += "     <Objeto tipo='cartola' cor='"+corcartola.name()+"'>\n";
+        xml += "          <Posicao x='"+getX()+"' y='"+getY()+"' altura='"+getAltura()+"' largura='"+getLargura()+"'>\n";
+        xml += "     </Objeto>";                
         return xml;
     }
     
